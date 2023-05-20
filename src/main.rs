@@ -1,3 +1,11 @@
+mod game;
+
+use std::process;
+
 fn main() {
-    println!("Hello, world!");
+    let mut game = game::Game::build().unwrap_or_else(|err| {
+        eprintln!("{err}");
+        process::exit(1);
+    });
+    game.run();
 }
